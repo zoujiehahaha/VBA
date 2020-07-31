@@ -1,0 +1,16 @@
+Sub 条件分表()
+
+    Cells.Select
+    Selection.AutoFilter
+    ActiveSheet.UsedRange.AutoFilter Field:=3, Criteria1:="1"
+    ActiveSheet.UsedRange.Select
+    Selection.Copy
+    Workbooks.Add
+    ActiveSheet.Paste
+    Application.CutCopyMode = False
+   ' ChDir "C:\"
+    ActiveWorkbook.SaveAs Filename:="D:\分表前缀—" & Format(Date, "yyyy年m月d日") & ".xlsx", _
+        FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False
+        ActiveWorkbook.Close
+ 
+End Sub
